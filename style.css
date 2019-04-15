@@ -1,0 +1,350 @@
+﻿body {
+    background-color: #303030;
+    color: #ffffff;
+    font-family: 'Lato', sans-serif; /*zaladowanie czcionki*/
+    font-size: 20px;
+}
+
+#container {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#processingL {
+    margin-top: 10px;
+    width: 700px;
+    float: left;
+}
+
+#processingR {
+    width: 300px;
+    float: left;
+}
+
+.processingBox {
+
+    margin: 10px;
+    width: 300px;
+    height: 80px;
+    background-color: #1A2B4A;
+    border-radius: 20px;
+    padding: 15px;
+}
+    .processingBox:hover {
+        background-color: #0C1321;
+    }
+.webglBox {
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    height: 80px;
+    background-color: #1A2B4A;
+    border-radius: 20px;
+    padding: 15px;
+}
+    .webglBox:hover {
+        background-color: #0C1321;
+    }
+
+.rectangle {
+    width: 960px;
+    margin: 20px;
+    text-align: center;
+}
+
+.square {
+    width: 50%;
+    float: left;
+}
+
+#logo {
+    float: left;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 70px;
+    width: 720px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+#zegar {
+    float: left;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 70px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.tile1 {
+    margin: 10px;
+    width: 230px;
+    height: 142px;
+    background-color: #8eecff;
+    float: left; /*coby byly obok siebie*/
+    text-align: center;
+    border-radius: 65px;
+}
+
+    .tile1:hover {
+        background-color: #44ecff;
+    }
+
+.tile2 {
+    margin: 10px;
+    width: 230px;
+    height: 142px;
+    background-color: #96ff76;
+    float: left; /*coby byly obok siebie*/
+    text-align: center;
+    border-radius: 65px;
+}
+
+    .tile2:hover {
+        background-color: #71ff2c;
+    }
+
+.tile3 {
+    margin: 10px;
+    width: 230px;
+    height: 142px;
+    background-color: #85e8b6;
+    float: left; /*coby byly obok siebie*/
+    text-align: center;
+    border-radius: 65px;
+}
+
+    .tile3:hover {
+        background-color: #42e888;
+    }
+
+.tile4 {
+    margin: 10px;
+    width: 230px;
+    height: 142px;
+    background-color: #879ae8;
+    float: left; /*coby byly obok siebie*/
+    text-align: center;
+    border-radius: 65px;
+}
+
+    .tile4:hover {
+        background-color: #446fe8;
+    }
+
+.tile5 {
+    margin: 10px;
+    width: 480px;
+    height: 142px;
+    background-color: #ff652c;
+    text-align: center;
+    border-radius: 85px;
+}
+
+    .tile5:hover {
+        background-color: #ff4a07;
+    }
+
+.tile6 {
+    margin: 10px;
+    width: 420px;
+    height: 244px;
+    background-color: #6CAFD1;
+    text-align: justify;
+    padding: 30px;
+    border-radius: 65px;
+}
+
+    .tile6:hover {
+        background-color: #6C97D1;
+    }
+
+.kontakt {
+    margin: 10px;
+    width: 105px;
+    height: 142px;
+    background-color: #3095d3;
+    float: left; /*coby byly obok siebie*/
+    border-radius: 25px;
+}
+
+    .kontakt:hover {
+        background-color: #305DD3;
+    }
+
+.usos {
+    margin: 10px;
+    width: 105px;
+    height: 142px;
+    background-color: #EA9136;
+    float: left; /*coby byly obok siebie*/
+    border-radius: 25px;
+}
+
+    .usos:hover {
+        background-color: #EA8036;
+    }
+
+.fb {
+    margin: 10px;
+    width: 105px;
+    height: 142px;
+    background-color: #4668b3;
+    float: left; /*coby byly obok siebie*/
+    border-radius: 25px;
+}
+
+    .fb:hover {
+        background-color: #4648B3;
+    }
+
+.insta {
+    margin: 10px;
+    width: 105px;
+    height: 142px;
+    background-color: #EF6528;
+    float: left; /*coby byly obok siebie*/
+    border-radius: 25px;
+}
+
+    .insta:hover {
+        background-color: #D15823;
+    }
+
+.processingTile1 {
+    margin: 10px;
+    width: 300px;
+    height: 185px;
+    background-color: #84B2FF;
+    text-align: center;
+    border-radius: 20px;
+    text-align: center;
+    padding: 15px;
+    font-size: 17px;
+}
+
+.processingTile2 {
+    margin: 10px;
+    width: 300px;
+    height: 185px;
+    background-color: #5885D1;
+    text-align: center;
+    border-radius: 20px;
+    text-align: justify;
+    padding: 15px;
+    font-size: 17px;
+}
+
+.processingTile3 {
+    margin: 10px;
+    width: 300px;
+    height: 185px;
+    background-color: #2A4C84;
+    text-align: center;
+    border-radius: 20px;
+    text-align: justify;
+    padding: 15px;
+    font-size: 17px;
+}
+
+.processingTile4 {
+    width: 100px;
+    height: 80px;
+    float: left;
+}
+
+.processingTile5 {
+    width: 200px;
+    height: 80px;
+    text-align: center;
+    text-align: justify;
+    font-size: 17px;
+    float: left;
+}
+
+.rhinoDescription {
+    width: 424px;
+    height: 310px;
+    margin: 10px;
+    background-color: #8596E8;
+    text-align: center;
+    border-radius: 20px;
+    text-align: justify;
+    padding: 15px;
+    font-size: 23px;
+}
+
+.rhinoDown {
+    margin-right: 10px;
+    margin-top: 10px;
+    width: 460px;
+    height: 245px;
+    background-color: #5078DE;
+    border-radius: 20px;
+    padding: 15px;
+    text-align:center;
+}
+
+.rhinoDown:hover {
+    background-color: #3E5EAD;
+}
+
+
+a.tilelinkprocessing {
+    color: #ffffff;
+    text-decoration: none;
+    display: block; /*zachowuj się jak element blokowy*/
+    width: 300px;
+    height: 80px;
+    border-radius: 20px;
+}
+
+a.tilelinkrhino {
+    color: #ffffff;
+    text-decoration: none;
+    display: block; /*zachowuj się jak element blokowy*/
+    width: 450px;
+    height: 270px;
+}
+
+a.tilelink1 {
+    color: #ffffff;
+    text-decoration: none;
+    display: block; /*zachowuj się jak element blokowy*/
+    width: 230px;
+    height: 142px;
+    border-radius: 65px;
+}
+
+a.tilelink2 {
+    color: #ffffff;
+    text-decoration: none;
+    display: block; /*zachowuj się jak element blokowy*/
+    width: 480px;
+    height: 142px;
+    border-radius: 85px;
+}
+
+a.tilelink3 {
+    color: #ffffff;
+    text-decoration: none;
+    display: block; /*zachowuj się jak element blokowy*/
+    width: 105px;
+    height: 142px;
+    border-radius: 25px;
+}
+
+a.tilelink4 {
+    color: #ffffff;
+    text-decoration: none;
+    display: block; /*zachowuj się jak element blokowy*/
+    width: 420px;
+    height: 244px;
+    border-radius: 65px;
+}
+
+a.tilelinkhtml5 {
+    color: #ffffff;
+    text-decoration: none;
+}

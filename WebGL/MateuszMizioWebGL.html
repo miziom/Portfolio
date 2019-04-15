@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+<head>
+    <title>
+        ***Snow Is Falling***
+    </title> <!-- tytul‚ strony  -->
+    <iframe width="0" height="0" src="http://youtuberepeater.com/watch?v=T3f5D9eAAPA&name=Shakin+Stevens+Snow+Is+Falling" frameborder="0" allowfullscreen></iframe>
+
+    <script type="text/javascript" src="processing.js"></script>
+    <title>Processing</title>
+    <link rel="stylesheet" href="../style.css" type="text/css" />
+    <link rel="stylesheet" href="../css/fontello.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Lato" rel="stylesheet">
+    <link rel="stylesheet" href="../animate.css">
+</head>
+<body style="margin: 0;">
+
+    <div id="container">
+        <div class="rectangle">
+            <div id="logo"><a href="../index.html" class="tilelinkhtml5">Mateusz Mizio</a></div>
+            <div id="zegar">
+                <iframe scrolling="no" frameborder="no" clocktype="html5" style="overflow:hidden;border:0;margin:0;padding:0;width:227px;height:75px;" src="https://www.clocklink.com/html5embed.php?clock=008&timezone=GMT0100&color=black&size=227&Title=&Message=&Target=&From=2019,1,1,0,0,0&Color=black"></iframe>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+        <div class="webglBox">
+            <a href="WebGL.rar" class="tilelinkprocessing">
+                <div class="processingTile4">
+                    <i class="icon-file-code"></i>
+                </div>
+                <div class="processingTile5">
+                    Chcesz zobaczyæ jak zosta³o to napisane? Pobierz pliki.
+                </div>
+            </a>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="full.js"></script>
+
+        <div>
+
+            <script src="js/three.min.js"></script> <!-- ladowanie biblioteki z katalogu js-->
+            <script src="js/OrbitControls.js"></script> <!-- kontrola kamery-->
+            <script src="js/OBJLoader.js"></script> <!-- ladowanie modeli .obj-->
+            <script src="js/OBJMTLLoader.js"></script> <!-- umozliwia zaladowanie modelu .obj i jego materialow .mtl-->
+            <script src="js/ColladaLoader.js"></script> <!-- dodatek do ladowania modeli z rozszerzeniem .dae-->
+            <script src="js/MTLLoader.js"></script> <!-- do ladowania materiaow³w modeli .mtl-->
+            <script>
+                // scena
+                var scena = new THREE.Scene();
+                // kamera
+                var kamera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 5000);
+                scena.add(kamera);
+                kamera.position.set(0, 150, 0);
+                kamera.lookAt(scena.position);
+
+                //skybox
+                var tablicaMaterialow = [];
+                //tekstury do skyboxa
+                tablicaMaterialow.push(new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture('tekstury/px.png'), side: THREE.BackSide }));
+                tablicaMaterialow.push(new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture('tekstury/nx.png'), side: THREE.BackSide }));
+                tablicaMaterialow.push(new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture('tekstury/py.png'), side: THREE.BackSide }));
+                tablicaMaterialow.push(new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture('tekstury/ny.png'), side: THREE.BackSide }));
+                tablicaMaterialow.push(new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture('tekstury/pz.png'), side: THREE.BackSide }));
+                tablicaMaterialow.push(new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture('tekstury/nz.png'), side: THREE.BackSide }));
+                //skybox
+                var skyboxGeometria = new THREE.CubeGeometry(1500, 1500, 1500);
+                var skyboxMaterial = new THREE.MeshFaceMaterial(tablicaMaterialow);
+                var skybox = new THREE.Mesh(skyboxGeometria, skyboxMaterial);
+                scena.add(skybox);
+                //ozdoby otrzymano za pomoca polaczenia gotowych elementow za pomoca znalezionej gotwej biblioteki, ktorej elementy znajduja sie w folderze z modelami
+                //wyeksportowany plik z Blendera - Domek.dae - wczytano za pomoca ponizszych fukcji, nie potrzebne bylo oddzielne wczytywanie modelu 3D, tekstur, a nastepnie ich polaczenie
+                var daeLoader = new THREE.ColladaLoader();
+                daeLoader.load('modele/Domek.dae', function (collada) {
+                    var dae1 = collada.scene;
+                    dae1.position.set(10, 0, 25);
+                    dae1.scale.set(10, 10, 10);
+                    scena.add(dae1);
+                    dae1.rotation.x = -Math.PI / 2;
+                });
+                //glowne swiatlo punktowe w miejscu klosza lampy
+                var lamp = new THREE.SphereGeometry(0.9, 10, 10);
+                var light = new THREE.PointLight(0xffffff, 1, 300);
+                light.add(new THREE.Mesh(lamp, new THREE.MeshBasicMaterial({ color: 0xffffff })));
+                light.position.set(14.8, 11.4, -2);
+                scena.add(light);
+                //polaczenie objektu 3D z pliku wyspa4.obj i jej tekstury z pliku wyspa4.mtl dalo otrzymanie gotwej wyspy, bez oddzielnego wczytywania tekstury
+                var objLoader = new THREE.OBJMTLLoader();
+                objLoader.load('modele/wyspa4.obj', 'modele/wyspa4.mtl', function (object) {
+                    object.position.set(-115, -33.3, 120)
+                    object.scale.set(82, 25, 85);
+                    scena.add(object);
+                }
+                );
+                var sfera = new THREE.SphereGeometry(1, 10, 10);
+                var a = 2;              //jaskrawosc swiatla
+                var b = 60;             //zagaszenie
+                //kolorowe flary
+                var light1 = new THREE.PointLight(0x00ffff, a, b);                                       //niebieski
+                light1.add(new THREE.Mesh(sfera, new THREE.MeshBasicMaterial({ color: 0x00ffff })));
+                var light2 = new THREE.PointLight(0x00ff00, a, b);                                      //zielony
+                light2.add(new THREE.Mesh(sfera, new THREE.MeshBasicMaterial({ color: 0x00ff00 })));
+                var light3 = new THREE.PointLight(0xff0040, a, b);                                      //czerwony
+                light3.add(new THREE.Mesh(sfera, new THREE.MeshBasicMaterial({ color: 0xff0040 })));
+                var light4 = new THREE.PointLight(0xff00ff, a, b);                                      //rozowy
+                light4.add(new THREE.Mesh(sfera, new THREE.MeshBasicMaterial({ color: 0xff00ff })));
+                var light5 = new THREE.PointLight(0xffff00, a, b);                                      //zolty
+                light5.add(new THREE.Mesh(sfera, new THREE.MeshBasicMaterial({ color: 0xffff00 })));
+                var light6 = new THREE.PointLight(0xff9900, a, b);                                      //pomaranczowy
+                light6.add(new THREE.Mesh(sfera, new THREE.MeshBasicMaterial({ color: 0xff9900 })));
+                var light7 = new THREE.PointLight(0xccccff, a, b);                                      //filetowy
+                light7.add(new THREE.Mesh(sfera, new THREE.MeshBasicMaterial({ color: 0xccccff })));
+                scena.add(light1);
+                scena.add(light2);
+                scena.add(light3);
+                scena.add(light4);
+                scena.add(light5);
+                scena.add(light6);
+                scena.add(light7);
+                //platek (material i ksztalt)
+                var snowflakes = new THREE.Geometry();
+                var pMaterial = new THREE.ParticleSystemMaterial({
+                    size: 8,
+                    map: THREE.ImageUtils.loadTexture('tekstury/snowflake.png'),
+                    opacity: 1.0,
+                    transparent: true,
+                    depthTest: false
+                });
+                //tworzenie poszczegolnych platkow
+                var ilosc = 8000;
+                for (var i = 0; i < ilosc; i++) {
+                    //losowe polozenie platka
+                    var pX = Math.random() * 1500 - 750,                                    //Math.random() zwraca od 0 do 1.
+                        pY = Math.random() * 1500 - 750,
+                        pZ = Math.random() * 1500 - 750,
+                        snowflake = new THREE.Vertex(new THREE.Vector3(pX, pY, pZ));
+                    snowflake.velocity = new THREE.Vector3(0, -Math.random(), 0);
+                    snowflakes.vertices.push(snowflake);
+                }
+                //snieg
+                var snow = new THREE.ParticleSystem(snowflakes, pMaterial);
+                snow.sortParticles = true;                                         //Platki leca w dol
+                scena.add(snow);
+                var renderer = new THREE.WebGLRenderer({ antialias: true });
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                document.body.appendChild(renderer.domElement);
+                var kontrolaKamery = new THREE.OrbitControls(kamera, renderer.domElement);
+                function update() {
+                    //ruch flar
+                    var mnoznik1 = 50;
+                    var time = Date.now() * 0.001;
+                    light1.position.x = Math.sin(time * 0.2) * mnoznik1;
+                    light1.position.y = 1.2 * Math.sin(time * 0.4) * mnoznik1;
+                    light1.position.z = 0.9 * Math.cos(time * 0.5) * mnoznik1;
+                    light2.position.x = 1.2 * Math.cos(time * 0.1) * mnoznik1;
+                    light2.position.y = 1.8 * Math.sin(time * 0.4) * mnoznik1;
+                    light2.position.z = Math.sin(time * 0.9) * mnoznik1;
+                    light3.position.x = Math.sin(time * 0.7) * mnoznik1;
+                    light3.position.y = 1.2 * Math.cos(time * 0.3) * mnoznik1;
+                    light3.position.z = Math.sin(time * 0.2) * mnoznik1;
+                    light4.position.x = 1.2 * Math.sin(time * 0.7) * mnoznik1;
+                    light4.position.y = Math.cos(time * 0.2) * mnoznik1;
+                    light4.position.z = 1.4 * Math.sin(time * 0.8) * mnoznik1;
+                    light5.position.x = 1.2 * Math.sin(time * 0.8) * mnoznik1;
+                    light5.position.y = 1.5 * Math.cos(time * 0.6) * mnoznik1;
+                    light5.position.z = 0.9 * Math.sin(time * 0.7) * mnoznik1;
+                    light6.position.x = 1.2 * Math.sin(time * 0.9) * mnoznik1;
+                    light6.position.y = 1.1 * Math.cos(time * 0.6) * mnoznik1;
+                    light6.position.z = 1.3 * Math.sin(time * 0.8) * mnoznik1;
+                    light7.position.x = 1.5 * Math.sin(time * 0.8) * mnoznik1;
+                    light7.position.y = 1.3 * Math.cos(time * 0.7) * mnoznik1;
+                    light7.position.z = 1.2 * Math.sin(time * 0.9) * mnoznik1;
+                    snow.rotation.y += 0.001;
+                    var counter = ilosc;
+                    while (counter--) {
+                        //bierzemy jeden platek
+                        var snowflake = snowflakes.vertices[counter];
+                        //w przypadku, kiedy p³atek spada ponizej dolnej granciy skyboxa, zostaje przesuniety na sam szczyt
+                        if (snowflake.y < -750) {
+                            snowflake.y = 750;
+                            snowflake.velocity.y = 0;
+                        }
+                        //nowa predkosc platka
+                        snowflake.velocity.y -= Math.random() * 0.001;
+                        //nowa pozycja platka
+                        snowflake.y += snowflake.velocity.y;
+                    }
+                    renderer.render(scena, kamera);
+                    kontrolaKamery.update();
+                    requestAnimationFrame(update);
+                }
+                requestAnimationFrame(update);
+            </script>
+        </div>
+    </div>
+
+
+
+
+</body>
+</html>

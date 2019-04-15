@@ -1,0 +1,65 @@
+ <!DOCTYPE html>
+ <html lang="pl-PL">
+ <head>
+     <script type="text/javascript" src="processing.js"></script>
+     <title>Processing</title>
+     <link rel="stylesheet" href="../style.css" type="text/css" />
+     <link rel="stylesheet" href="../css/fontello.css" type="text/css" />
+     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Lato" rel="stylesheet">
+     <link rel="stylesheet" href="../animate.css">
+ </head>
+ <body>
+     <div id="container">
+         <div class="rectangle">
+             <div id="logo"><a href="../index.html" class="tilelinkhtml5">Mateusz Mizio</a></div>
+             <div id="zegar">
+                 <iframe scrolling="no" frameborder="no" clocktype="html5" style="overflow:hidden;border:0;margin:0;padding:0;width:227px;height:75px;" src="https://www.clocklink.com/html5embed.php?clock=008&timezone=GMT0100&color=black&size=227&Title=&Message=&Target=&From=2019,1,1,0,0,0&Color=black"></iframe>
+             </div>
+             <div style="clear:both"></div>
+         </div>
+
+         <div id="processingL">
+             <canvas data-processing-sources="gra.pde"></canvas>
+         </div>
+         <div id="processingR">
+             <div class="processingTile1">
+                 <b><i>CO TO JEST?</i></b><br /><br />
+                 Aplikacja mia³a na celu wykorzystanie <em>Krzywej Béziera</em>. Pozwala na zaznajomienie siê z w jaki sposób tworzona jest krzywa na podstawie<br />
+                 4 punktów kontrolnych. Ponadto mo¿liwe jest wyœwietlenie konstrukcji <br />
+                 <em>de Casteljau</em> dla tej krzywej.
+             </div>
+             <div class="processingTile2">
+                 <center><b><i>JAK W TO <em>"GRAÆ"</em>?</i></b></center><br />
+                 <em>
+                     1. Punkt 1 musi byæ na polu START, punkt 4 na polu META. <br />
+                     2. Pozosta³e punkty ustaw w taki sposób, aby utworzyæ krzywa, która nie przetnie przeszkód. <br />
+                     3. Kliknij 'P'. Jezeli nic siê nie pojawi³o, zmieñ po³o¿enie punktów 2 i 3.
+                 </em>
+             </div>
+             <div class="processingTile3">
+                 <center><b><i>NIE WIESZ JAK TWORZONA KRZYWA JEST?</i></b></center><br />
+                 Kliknij 'M' w celu w³aczenia trybu <em>sprawdzenia krzywej</em>. Mo¿esz zobaczyæ, jak na podstawie punktów tworzona jest <em>Krzywa Béziera</em>.
+                 Zmieniajac wartoœæ parametru 'u' mo¿esz wp³ynaæ na konstruckjê <em>de Casteljau</em>.
+             </div>
+
+             <div class="processingBox">
+                 <a href="Processing.rar" class="tilelinkprocessing">
+                     <div class="processingTile4">
+                         <i class="icon-file-code"></i>
+                     </div>
+                     <div class="processingTile5">
+                         Chcesz zobaczyæ jak zosta³o to napisane? Pobierz Kod napisany przy pomocy Processingu.
+                     </div>
+                 </a>
+             </div>
+
+         </div>
+         <div style="clear:both"></div>
+
+         <div class="rectangle">2019 &copy; Mateusz Mizio - Portfolio. Projekt GKO 2018/2019</div>
+     </div>
+
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     <script type="text/javascript" src="../full.js"></script>
+ </body>
+ </html> 
