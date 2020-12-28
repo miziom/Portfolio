@@ -8,3 +8,5 @@ How start?
 1. Download repository
 2. To see open index.html in web browser.
 3. To see/change code open Projekt/Projekt.sln in Visual Studio.
+
+##### or [click here](http://mateuszmmgko.5v.pl/index.html) 
